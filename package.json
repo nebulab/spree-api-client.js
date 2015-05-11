@@ -1,0 +1,29 @@
+{
+  "name": "spree-api-client.js",
+  "version": "0.0.0",
+  "description": "JS Client for Spree API",
+  "main": "SpreeClient.js",
+  "dependencies": {
+    "morph": "^0.2.0",
+    "axios": "^0.5.4",
+    "jsuri": "^1.3.0"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4",
+    "sinon": "^1.14.1",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-mocha": "^2.0.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "keywords": [
+    "spree",
+    "api",
+    "client"
+  ],
+  "author": "Nebulab",
+  "license": "MIT"
+}

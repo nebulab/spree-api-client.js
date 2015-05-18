@@ -4,7 +4,7 @@ var mocha = require('gulp-mocha');
 
 const JS_SRC='./src';
 const JS_DEST='./';
-const JS_BUNDLE='SpreeClient';
+const JS_BUNDLE='SpreeApiClient';
 process.env.NODE_ENV = 'production'
 
 gulp.task("watch", function() {
@@ -13,13 +13,13 @@ gulp.task("watch", function() {
 });
 
 gulp.task('build', function() {
-  return gulp.src(JS_SRC + '/SpreeClient.js').
+  return gulp.src(JS_SRC + '/SpreeApiClient.js').
     pipe(babel()).
     pipe(gulp.dest(JS_DEST))
 });
 
 gulp.task('test', function () {
-  return gulp.src('test/SpreeClient.js', {read: false}).
+  return gulp.src('test/SpreeApiClient.js', {read: false}).
     pipe(mocha({reporter: 'spec'}));
 });
 

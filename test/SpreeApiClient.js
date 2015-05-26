@@ -12,13 +12,9 @@ describe('SpreeApiClient', function() {
     });
   });
 
-  describe('.request', function() {
-    it('have X-Spree-Token header', function(){
-      expect(spreeClient.orders(11).request.get().headers['X-Spree-Token']).to.equal('12345')
-    });
-
-    it('makes request to the correct url', function(){
-      expect(spreeClient.orders(101).request().uri.href).to.equal('http://nebulab.it:3030/v1/orders/101')
+  describe('.get', function() {
+    it('sets the the token', function(){
+      expect(spreeClient.spreeToken('abc').orders(11)._token).to.equal('abc')
     });
   });
 

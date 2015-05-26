@@ -24,9 +24,9 @@ var _camelize = require('camelize');
 
 var _camelize2 = _interopRequireDefault(_camelize);
 
-var _requestPromise = require('request-promise');
+var _axios = require('axios');
 
-var _requestPromise2 = _interopRequireDefault(_requestPromise);
+var _axios2 = _interopRequireDefault(_axios);
 
 var SpreeApiClient = (function (_UrlAssembler) {
   function SpreeApiClient(baseUrlOrUrlAssembler) {
@@ -61,19 +61,34 @@ var SpreeApiClient = (function (_UrlAssembler) {
       return chainable;
     }
   }, {
-    key: 'request',
-    get: function () {
-      return _requestPromise2['default'].defaults({
-        uri: this.toString(),
-        transform: function transform(data) {
-          if (data.length == 0) {
-            return data;
-          } else {
-            return JSON.parse(data);
-          }
-        },
-        headers: { 'X-Spree-Token': this._token }
-      });
+    key: 'get',
+    value: function get() {
+      return _axios2['default'].get(this.toString(), { headers: { 'X-Spree-Token': this._token } });
+    }
+  }, {
+    key: 'head',
+    value: function head() {
+      return _axios2['default'].head(this.toString(), { headers: { 'X-Spree-Token': this._token } });
+    }
+  }, {
+    key: 'delete',
+    value: function _delete() {
+      return _axios2['default']['delete'](this.toString(), { headers: { 'X-Spree-Token': this._token } });
+    }
+  }, {
+    key: 'post',
+    value: function post(data) {
+      return _axios2['default'].post(this.toString(), data, { headers: { 'X-Spree-Token': this._token } });
+    }
+  }, {
+    key: 'put',
+    value: function put(data) {
+      return _axios2['default'].put(this.toString(), data, { headers: { 'X-Spree-Token': this._token } });
+    }
+  }, {
+    key: 'patch',
+    value: function patch(data) {
+      return _axios2['default'].patch(this.toString(), data, { headers: { 'X-Spree-Token': this._token } });
     }
   }], [{
     key: 'endpoints',

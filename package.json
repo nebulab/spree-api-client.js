@@ -5,7 +5,7 @@
   "main": "SpreeApiClient.js",
   "dependencies": {
     "url-assembler": "^1.2.2",
-    "request-promise": "^0.4.2",
+    "axios": "^0.5.4",
     "camelize": "^1.0.0"
   },
   "devDependencies": {

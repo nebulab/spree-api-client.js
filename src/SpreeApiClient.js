@@ -1,6 +1,6 @@
 import UrlAssembler from 'url-assembler';
 import camelize from 'camelize';
-import requestPromise from 'request-promise';
+import axios from 'axios';
 
 class SpreeApiClient extends UrlAssembler {
 
@@ -28,18 +28,28 @@ class SpreeApiClient extends UrlAssembler {
     return chainable;
   }
 
-  get request(){
-    return requestPromise.defaults({
-      uri: this.toString(),
-      transform: function(data) {
-        if (data.length == 0){
-          return data
-        }else{
-          return JSON.parse(data)
-        }
-      },
-      headers: { 'X-Spree-Token': this._token }
-    });
+  get() {
+    return axios.get(this.toString(), { headers: { 'X-Spree-Token': this._token }})
+  }
+
+  head() {
+    return axios.head(this.toString(), { headers: { 'X-Spree-Token': this._token }})
+  }
+
+  delete() {
+    return axios.delete(this.toString(), { headers: { 'X-Spree-Token': this._token }})
+  }
+
+  post(data) {
+    return axios.post(this.toString(), data, { headers: { 'X-Spree-Token': this._token }})
+  }
+
+  put(data) {
+    return axios.put(this.toString(), data, { headers: { 'X-Spree-Token': this._token }})
+  }
+
+  patch(data) {
+    return axios.patch(this.toString(), data, { headers: { 'X-Spree-Token': this._token }})
   }
 
   static endpoints() {

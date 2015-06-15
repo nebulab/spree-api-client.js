@@ -13,7 +13,7 @@ Usage
 
 ```javascript
 var client = new SpreeApiClient("http://nebulab.it").spreeToken('12345').prefix('v1');
-client.orders(11).request.get().then(function(data){
+client.orders(11).get().then(function(data){
   console.log(data);
 });
 ```

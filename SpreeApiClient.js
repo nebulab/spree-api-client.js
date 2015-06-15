@@ -63,32 +63,41 @@ var SpreeApiClient = (function (_UrlAssembler) {
   }, {
     key: 'get',
     value: function get() {
-      return _axios2['default'].get(this.toString(), { headers: { 'X-Spree-Token': this._token } });
+      return _axios2['default'].get(this.toString(), this.headers());
     }
   }, {
     key: 'head',
     value: function head() {
-      return _axios2['default'].head(this.toString(), { headers: { 'X-Spree-Token': this._token } });
+      return _axios2['default'].head(this.toString(), this.headers());
     }
   }, {
     key: 'delete',
     value: function _delete() {
-      return _axios2['default']['delete'](this.toString(), { headers: { 'X-Spree-Token': this._token } });
+      return _axios2['default']['delete'](this.toString(), this.headers());
     }
   }, {
     key: 'post',
     value: function post(data) {
-      return _axios2['default'].post(this.toString(), data, { headers: { 'X-Spree-Token': this._token } });
+      return _axios2['default'].post(this.toString(), data, this.headers());
     }
   }, {
     key: 'put',
     value: function put(data) {
-      return _axios2['default'].put(this.toString(), data, { headers: { 'X-Spree-Token': this._token } });
+      return _axios2['default'].put(this.toString(), data, this.headers());
     }
   }, {
     key: 'patch',
     value: function patch(data) {
-      return _axios2['default'].patch(this.toString(), data, { headers: { 'X-Spree-Token': this._token } });
+      return _axios2['default'].patch(this.toString(), data, this.headers());
+    }
+  }, {
+    key: 'headers',
+    value: function headers() {
+      if (this._token) {
+        return { headers: { 'X-Spree-Token': this._token } };
+      } else {
+        return {};
+      }
     }
   }], [{
     key: 'endpoints',

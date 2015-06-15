@@ -29,27 +29,35 @@ class SpreeApiClient extends UrlAssembler {
   }
 
   get() {
-    return axios.get(this.toString(), { headers: { 'X-Spree-Token': this._token }})
+    return axios.get(this.toString(), this.headers() )
   }
 
   head() {
-    return axios.head(this.toString(), { headers: { 'X-Spree-Token': this._token }})
+    return axios.head(this.toString(), this.headers() )
   }
 
   delete() {
-    return axios.delete(this.toString(), { headers: { 'X-Spree-Token': this._token }})
+    return axios.delete(this.toString(), this.headers() )
   }
 
   post(data) {
-    return axios.post(this.toString(), data, { headers: { 'X-Spree-Token': this._token }})
+    return axios.post(this.toString(), data, this.headers() )
   }
 
   put(data) {
-    return axios.put(this.toString(), data, { headers: { 'X-Spree-Token': this._token }})
+    return axios.put(this.toString(), data, this.headers() )
   }
 
   patch(data) {
-    return axios.patch(this.toString(), data, { headers: { 'X-Spree-Token': this._token }})
+    return axios.patch(this.toString(), data, this.headers() )
+  }
+
+  headers() {
+    if(this._token) {
+      return { headers: { 'X-Spree-Token': this._token }}
+    } else {
+      return {}
+    }
   }
 
   static endpoints() {

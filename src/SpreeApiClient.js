@@ -64,7 +64,7 @@ class SpreeApiClient extends UrlAssembler {
     return [ 'products', 'product_properties', 'variants', 'orders',
       'line_items', 'checkouts', 'payments', 'return_authorizations',
       'shipments', 'taxonomies', 'addresses', 'countries', 'stock_locations',
-      'stock_items', 'stock_movements', 'zones', 'next']
+      'stock_items', 'stock_movements', 'zones', 'next', 'apply_coupon_code']
   }
 }
 
